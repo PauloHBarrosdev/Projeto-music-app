@@ -7,17 +7,17 @@ from app.services.Users import UserService
 
 
 @app.get('/user')
-def retorna_users() -> dict:
+def get_users() -> dict:
     usr_service = UserService()
     return usr_service.get_user()
 
 @app.get('/user/<id>')
-def retorna_user(id: int) -> dict:
+def get_user(id: int) -> dict:
     usr_service = UserService()
     return usr_service.get_user(id)
 
 @app.post('/user')
-def cria_user(user_list: list[User]) -> dict:
+def post_user(user_list: list[User]) -> dict:
     usr_service = UserService()
-    return usr_service.get_user()
+    return usr_service.post_user()  #ainda vou adcionar o post_user()
     

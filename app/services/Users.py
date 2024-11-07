@@ -15,7 +15,7 @@ class UserService:
 
         if query is not None:
             userview = UserView()
-            response = userview.json(query)
+            response = userview.entry(query)
             return response, 200
         
         else:

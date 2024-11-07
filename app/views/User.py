@@ -4,7 +4,7 @@ from flask import jsonify
 
 class UserView:
     @staticmethod
-    def json(resp: User | list):
+    def entry(resp: User | list):
         if isinstance(resp, User):
             user_info = {
                 'user_id': resp.user_id,
