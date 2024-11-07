@@ -11,7 +11,7 @@ class UserView:
                 'name': resp.name,
                 'user_group': resp.user_group,
                 'birth_date': resp.birth_date,
-                'email': resp.email,     
+                'email': resp.email   
             }
 
             return jsonify(user_info)
