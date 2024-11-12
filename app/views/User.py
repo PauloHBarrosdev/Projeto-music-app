@@ -1,33 +1,25 @@
-from app.models.User import User
-from flask import jsonify
+from app.models.User import User, UserSchema
+from flask import jsonify, json
 
 
 class UserView:
-    @staticmethod
-    def entry(resp: User | list):
-        if isinstance(resp, User):
-            user_info = {
-                'user_id': resp.user_id,
-                'name': resp.name,
-                'user_group': resp.user_group,
-                'birth_date': resp.birth_date,
-                'email': resp.email   
-            }
 
-            return jsonify(user_info)
+    @staticmethod
+    def dump_json(resp: User | list):
+        if isinstance(resp, User):
+            user_info = UserSchema()
+            return jsonify(user_info.dump(resp))
         
         else:
             u_list = list()
-        for resp in resp:
-
-            user_info = {
-            'user_id': resp.user_id,
-            'name': resp.name,
-            'user_group': resp.user_group,
-            'birth_date': resp.birth_date,
-            'email': resp.email,    
-        }
+            for object in resp:
+                print(object)
+                user_info = UserSchema()
+                u_list.append(user_info.dump(object))
+            return jsonify(u_list)
+    
+    @staticmethod
+    def load_json(user: json):
+        usr = UserSchema.load(user)
+        return User(usr)
             
-            u_list.append(user_info)
-        return jsonify(u_list)
-        

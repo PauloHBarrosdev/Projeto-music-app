@@ -1,8 +1,7 @@
 from app import app
 from app.models.User import User
-from flask import jsonify
-from app.views.User import UserView
 from app.services.Users import UserService
+from flask import request
 
 
 
@@ -17,7 +16,8 @@ def get_user(id: int) -> dict:
     return usr_service.get_user(id)
 
 @app.post('/user')
-def post_user(user_list: list[User]) -> dict:
+def post_user() -> dict:
     usr_service = UserService()
-    return usr_service.post_user()  #ainda vou adcionar o post_user()
+    print(request.get_json())
+    return usr_service.post_user(request.get_json()) 
     

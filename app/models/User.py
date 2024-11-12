@@ -19,4 +19,4 @@ class UserSchema(ma.Schema):
     user_group = fields.Int(required=True)
     birth_date = fields.Date(required=True)
     email = fields.Email(required=True)
-    password = fields.Str(required=True)
+    password = fields.Str(required=True, load_only=True)
